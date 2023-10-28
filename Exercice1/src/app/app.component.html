@@ -1,0 +1,28 @@
+<input
+    #input
+    (keyup.enter)="enterUserName(input.value)"
+    type="text"
+/>
+
+<h3>Select the font we'll use</h3>
+<ul class ="dropdownInit">
+    <option value="default">{{ActualFont}}</option>
+    <li  *ngFor="let font of FontsList" class="dropdown-content">
+    <button type="button" (click)="changeFont(font)" class="dropdownButton">
+        <option>
+            {{font}}
+        </option>
+    </button>
+    </li>
+</ul>
+
+
+<input
+    #input2
+    [value]="40"
+    (mouseup)="changeSize(input2.value)"
+    type="number"
+/>
+
+
+<p id="HelloNAME">Bonjour {{User}}</p>
