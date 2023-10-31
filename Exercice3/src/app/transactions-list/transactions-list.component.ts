@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, LOCALE_ID } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Transaction } from 'src/assets/data/transaction';
@@ -27,8 +27,6 @@ export class TransactionsListComponent {
     // Getting all transaction
     this.DataSource.getAllTransactions().subscribe((transactions) => {
       this.transactions = transactions as Transaction[];
-      this.transactions.map((transaction) => {
-      });
       this.sortedData = this.transactions.slice();
     });
   }

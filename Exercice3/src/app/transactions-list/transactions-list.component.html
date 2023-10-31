@@ -12,7 +12,7 @@
   <tr
     *ngFor="let transaction of sortedData"
     class="content"
-    routerLink="TransactionDetail/01-00"
+    [routerLink]="['/TransactionDetail', transaction.id]"
   >
     <td>{{transaction.id}}</td>
     <td>{{transaction.amount}}</td>

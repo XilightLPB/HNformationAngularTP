@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import { SelectMultipleControlValueAccessor } from '@angular/forms';
 import { timer } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
