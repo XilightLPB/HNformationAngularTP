@@ -12,15 +12,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    TransactionsListComponent,
-    TransactionDetailsComponent
+    TransactionDetailsComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+    TransactionsListComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
