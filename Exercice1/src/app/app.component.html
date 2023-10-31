@@ -24,5 +24,18 @@
     type="number"
 />
 
+<br>
+<svg width="50" height="50" (click)="changeAlign(3)">
+    <rect width="45" height="45" [class.selected]="ActualAlign === 3" [class.unselected]="ActualAlign != 3"/>
+</svg> 
+
+<svg width="50" height="50" (click)="changeAlign(2)">
+    <rect width="45" height="45" [class.selected]="ActualAlign === 2" [class.unselected]="ActualAlign != 2"/>
+</svg> 
+
+<svg width="50" height="50" (click)="changeAlign(1)">
+    <rect width="45" height="45" [class.selected]="ActualAlign === 1" [class.unselected]="ActualAlign != 1"/>
+</svg> 
+
 
 <p id="HelloNAME">Bonjour {{User}}</p>

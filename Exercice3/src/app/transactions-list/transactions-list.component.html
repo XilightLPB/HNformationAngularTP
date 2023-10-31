@@ -1,0 +1,24 @@
+<h2>Transaction list</h2>
+<table matSort (matSortChange)="sortData($event)">
+  <tr>
+    <th mat-sort-header="id">Id</th>
+    <th mat-sort-header="amount">Amount</th>
+    <th mat-sort-header="balance">Balance</th>
+    <th mat-sort-header="label">Label</th>
+    <th mat-sort-header="date">Date</th>
+    <!--<th> Description </th>-->
+  </tr>
+
+  <tr
+    *ngFor="let transaction of sortedData"
+    class="content"
+    routerLink="TransactionDetail/01-00"
+  >
+    <td>{{transaction.id}}</td>
+    <td>{{transaction.amount}}</td>
+    <td>{{transaction.balance}}</td>
+    <td>{{transaction.label}}</td>
+    <td>{{transaction.date}}</td>
+    <!--<td>{{ transaction.description }}</td>-->
+  </tr>
+</table>

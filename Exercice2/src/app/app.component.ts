@@ -1,32 +1,100 @@
 import { Component } from '@angular/core';
+import { Operation } from './operation';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center" class="content">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <span style="display: block">{{ title }} app is running!</span>
-      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-    </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
-    <router-outlet></router-outlet>
-  `,
-  styles: []
+  templateUrl: `AppComponent.component.html`,
+  styleUrls: ['style.css'],
 })
+
 export class AppComponent {
-  title = 'Exercice2';
+  OperationsList: Operation[] =[];
+  LastOp:Operation;
+  NextOPid: number = 0;
+  OperationType:number = 1;
+  ActualSymbol:string = "+";
+  
+  //Since we use id to know what operation is being processed we need to change the operation symbol somewhere
+  changeSymbol (OperationType:number){
+    switch (OperationType){
+      case 1:
+        this.ActualSymbol = "+";
+        break;
+      case 2:
+        this.ActualSymbol = "-";
+        break;
+      case 3:
+        this.ActualSymbol = "x";
+        break;
+      case 4:
+        this.ActualSymbol = "/";
+        break;
+    }
+    this.OperationType = OperationType;
+
+  }
+
+  //Call the function do math and export the operation into historique, and display results
+  CalcAndExport( Input1: string, input2: string){
+    let ToStore: Operation = this.DoMath(this.OperationType, Number(Input1), Number(input2));
+    this.LastOp = ToStore;
+    this.OperationsList.push(ToStore);
+    let currentResult: number = ToStore.result;
+    let ResultDisplay = document.getElementById("Result");
+
+    if (ResultDisplay!=null)
+    {
+      ResultDisplay.innerHTML = currentResult.toString();
+      //console.log("change result successfully");
+    }
+    let LastResultDisplay = document.getElementById("LastResult");
+    if (LastResultDisplay!=null)
+    {
+      LastResultDisplay.innerHTML = currentResult.toString();
+      //console.log("change result successfully");
+    }
+    
+  }
+
+  
+  DoMath(OperationType: number, FirstInput:number, SecondInput:number)
+  {
+    let CurrentDate = new Date();
+    let result = 0;
+    let OperationSymbol ="";
+    switch (OperationType){
+      case 1:
+        result = FirstInput + SecondInput;
+        OperationSymbol = "+";
+        break;
+      case 2:
+        result = FirstInput-SecondInput;
+        OperationSymbol = "-";
+        break;
+      case 3:
+        result = FirstInput*SecondInput;
+        OperationSymbol = "x";
+        break;
+      case 4:
+        result = FirstInput/SecondInput;
+        OperationSymbol = "/";
+        break;
+    }
+
+    let OPid = this.NextOPid;
+    this.NextOPid+=1;
+    CurrentDate = new Date();
+
+    let resultOP = new Operation(OPid, FirstInput, SecondInput, OperationSymbol, result, CurrentDate);
+    return resultOP;
+  }
+
+  ClearHistorique(){
+    this.OperationsList = [];
+  }
+
+  removeOP(Operation:Operation){
+    let IdToDelete = Operation.id;
+    this.OperationsList=this.OperationsList.filter(x => x.id !== IdToDelete )
+  }
 }

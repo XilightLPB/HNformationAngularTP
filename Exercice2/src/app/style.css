@@ -1,24 +1,29 @@
-
-body{
+.calculette{
     display: flex;
-    overflow: none;
-    margin: 0px;
-    padding:0px;
-    flex-direction: column;
-    
+    flex-wrap: wrap;
 }
 
+.SimpleCase{
+    max-height: 50px;
+}
+
+#Result{
+    
+    padding-left: 10px;
+}
 .dropdownInit{
-    width:25%;
+    width: max-content;
     background-color:rgb(190, 190, 190);
     text-align:center;
     color:rgb(0, 0, 0);
     height: fit-content;
-    padding:2px;
+    
+    padding: 8px;
     position:relative;
     border-color: rgb(43, 43, 43);
     border-width:1px;
     border-style: solid;
+    text-align: center;
 }
 
 .dropdown-content{
@@ -35,7 +40,7 @@ body{
     text-align:center;
     color:rgb(0, 0, 0);
     height: fit-content;
-    padding:0px;
+    padding:10px;
     position:relative;
     border-color: rgb(43, 43, 43);
     border-width:1px;
@@ -48,19 +53,6 @@ body{
     text-align: center;
     color:rgb(153, 158, 163);
     height: fit-content;
-    padding: 2px;
+    padding: 10px;
     box-sizing:border-box;
-}
-
-.unselected{
-    fill:rgb(255, 255, 255);
-    stroke-width:3;
-    stroke:rgb(0,0,0);
-}
-
-.selected{
-    fill:rgb(248, 0, 0);
-    stroke-width:3;
-    stroke:rgb(0,0,0);
-    
 }

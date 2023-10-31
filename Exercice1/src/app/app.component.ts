@@ -12,12 +12,14 @@ export class AppComponent implements OnInit {
   FontsList: string[] = ["Arial", "Verdana", "Tahoma", "Fira Sans"];
   ActualFont: string = "Arial";
   ActualSize: string = "40";
+  ActualAlign: number = 2;
 
   ngOnInit(){
-    //things to define in initialization
+    
     this.enterUserName("walter white");
     this.changeFont(this.ActualFont);
     this.changeSize(this.ActualSize);
+    this.changeAlign(this.ActualAlign);
   }
 
   enterUserName(UserName: string){
@@ -30,10 +32,10 @@ export class AppComponent implements OnInit {
     let TextToModify = document.getElementById("HelloNAME");
     if (TextToModify !=null){
       TextToModify.style.fontFamily = this.ActualFont;
-      //console.log(`Font changed to ${this.ActualFont}`);
+      
     }
     else{
-      //console.log(`There was an error while changing font to ${this.ActualFont}`);
+      
     }
   }
 
@@ -44,11 +46,10 @@ export class AppComponent implements OnInit {
     if(TextToModify!=null)
     {
       TextToModify.style.fontSize = this.ActualSize;
-      //console.log(`Size of the text has been changed to ${this.ActualSize}`);
     }
     else
     {
-      //console.log(`failed to change fontSize`);
+      
     }
   }
 
@@ -69,6 +70,7 @@ export class AppComponent implements OnInit {
           console.log(`The text will be aligned on the left`);
           break;
       }
+      this.ActualAlign = NewAlign;
   }
 }
 }
