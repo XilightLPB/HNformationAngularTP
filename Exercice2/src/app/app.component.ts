@@ -31,7 +31,6 @@ export class AppComponent {
         break;
     }
     this.OperationType = OperationType;
-
   }
 
   //Call the function do math and export the operation into historique, and display results
@@ -92,7 +91,7 @@ export class AppComponent {
   ClearHistorique(){
     this.OperationsList = [];
   }
-
+  
   removeOP(Operation:Operation){
     let IdToDelete = Operation.id;
     this.OperationsList=this.OperationsList.filter(x => x.id !== IdToDelete )

@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
     let TextToModify = document.getElementById("HelloNAME");
     if (TextToModify !=null){
       TextToModify.style.fontFamily = this.ActualFont;
-      
     }
     else{
       
@@ -57,7 +56,6 @@ export class AppComponent implements OnInit {
     let TextToModify = document.getElementById("HelloNAME");
     if (TextToModify != null)
     {
-      
       switch(NewAlign){
         case 1:
           TextToModify.style.textAlign = "right";
